@@ -11,6 +11,7 @@ import React, {
 
 import Badge from './Badge';
 import Separator from './helpers/Separator';
+import Web from './helpers/WebView';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,7 +40,11 @@ const styles = StyleSheet.create({
 
 class Repositories extends Component {
   openPage(url) {
-    console.log('the url is: ', url);
+    this.props.navigator.push({
+      component: Web,
+      title: 'Github',
+      passProps: {url},
+    });
   }
 
   render() {
