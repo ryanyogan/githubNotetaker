@@ -4,8 +4,6 @@ import React, {
   AppRegistry,
   Component,
   StyleSheet,
-  Text,
-  View,
   NavigatorIOS,
 } from 'react-native';
 

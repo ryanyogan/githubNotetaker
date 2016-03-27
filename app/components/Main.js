@@ -10,6 +10,8 @@ import React, {
   ActivityIndicatorIOS,
 } from 'react-native';
 
+import Dashboard from './Dashboard';
+
 import api from '../utils/api';
 
 const styles = StyleSheet.create({
@@ -102,6 +104,10 @@ class Main extends Component {
   }
 
   render() {
+    const showErr = (
+      this.state.error ? <Text>{this.state.error}</Text> : <View />
+    );
+
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Seach for a Github User</Text>
@@ -117,6 +123,12 @@ class Main extends Component {
         >
           <Text style={styles.buttonText}>SEARCH</Text>
         </TouchableHighlight>
+        <ActivityIndicatorIOS
+          animating={this.state.isLoading}
+          color="#111"
+          size="large"
+        />
+        {showErr}
       </View>
     );
   }
