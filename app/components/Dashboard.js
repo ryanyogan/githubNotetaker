@@ -10,6 +10,9 @@ import React, {
 } from 'react-native';
 
 import Profile from './Profile';
+import Repositories from './Repositories';
+
+import api from '../utils/api';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,8 +38,18 @@ class Dashboard extends Component {
     });
   }
 
-  goToRepos(event) {
-
+  goToRepos() {
+    api.getRepos(this.props.userInfo.login)
+      .then((res) => {
+        this.props.navigator.push({
+          title: 'Repositories',
+          component: Repositories,
+          passProps: {
+            userInfo: this.props.userInfo,
+            repos: res,
+          },
+        });
+      });
   }
 
   goToNotes(event) {
