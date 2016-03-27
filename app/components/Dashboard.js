@@ -9,6 +9,8 @@ import React, {
   TouchableHighlight,
 } from 'react-native';
 
+import Profile from './Profile';
+
 const styles = StyleSheet.create({
   container: {
     marginTop: 65,
@@ -25,8 +27,12 @@ const styles = StyleSheet.create({
 });
 
 class Dashboard extends Component {
-  goToProfile(event) {
-
+  goToProfile() {
+    this.props.navigator.push({
+      title: 'Profile',
+      component: Profile,
+      passProps: {userInfo: this.props.userInfo},
+    });
   }
 
   goToRepos(event) {
